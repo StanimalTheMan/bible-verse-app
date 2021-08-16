@@ -10,6 +10,7 @@ from .forms import CommentForm
 class VerseListView(ListView):
     model = Verse 
     template_name = 'verse_list.html'
+    paginate_by = 3
 
 class VerseDisplay(DetailView):
     model = Verse
