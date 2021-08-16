@@ -6,7 +6,7 @@
     {% for verse in object_list %} 
         <div class="card">
             <div class="card-header">
-                <span class="font-weight-bold">{{ verse.book }} {{ verse.chapter }}:{{ verse.verse }}({{ verse.version }})</span> &middot;
+                <span class="font-weight-bold"><a href="{% url 'verse_detail' verse.pk %}">{{ verse.book }} {{ verse.chapter }}:{{ verse.verse }}({{ verse.version }})</a></span> &middot;
             </div>
             <div class="card-body">
                 {{ verse.content }}
