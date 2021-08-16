@@ -2,8 +2,24 @@
 
 {% block content %} 
     <div class="article-entry">
-        <h2>{{ object.book }} {{ object.chapter }}:{{ object.verse }} ({{ object.version }} )</h2>
-        <p>{{ object.content }}</p>
+        <h2>{{ verse.book }} {{ verse.chapter }}:{{ verse.verse }} ({{ verse.version }} )</h2>
+        <p>{{ verse.content }}</p>
+        <hr>
+        <h3 id="comments">Comments</h3>
+        {% for comment in verse.comments.all %} 
+        <p><span class="font-weight-bold">
+            {{ comment.author }} &middot;
+        </span>{{ comment.comment }}</p>
+        {% empty %} 
+        <p>Feel free to leave the first comment!</p>
+        {% endfor %}
+        <hr>
+        <h3>Add a comment</h3>
+        <form action="" method="post">
+            {% csrf_token %} 
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
     </div>
 
     <p>Back to <a href="{% url 'verse_list' %}">All Verses</a>.</p>
